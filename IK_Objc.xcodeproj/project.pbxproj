@@ -10,12 +10,15 @@
 		B7F35C7C1A593AF00097B4D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F35C7B1A593AF00097B4D9 /* main.m */; };
 		B7F35C7F1A593AF00097B4D9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F35C7E1A593AF00097B4D9 /* AppDelegate.m */; };
 		B7F35C821A593AF00097B4D9 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F35C811A593AF00097B4D9 /* GameScene.m */; };
-		B7F35C841A593AF00097B4D9 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B7F35C831A593AF00097B4D9 /* GameScene.sks */; };
 		B7F35C871A593AF00097B4D9 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F35C861A593AF00097B4D9 /* GameViewController.m */; };
 		B7F35C8A1A593AF00097B4D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F35C881A593AF00097B4D9 /* Main.storyboard */; };
-		B7F35C8C1A593AF00097B4D9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7F35C8B1A593AF00097B4D9 /* Images.xcassets */; };
 		B7F35C8F1A593AF00097B4D9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7F35C8D1A593AF00097B4D9 /* LaunchScreen.xib */; };
 		B7F35C9B1A593AF00097B4D9 /* IK_ObjcTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F35C9A1A593AF00097B4D9 /* IK_ObjcTests.m */; };
+		B7F35CA91A593B1D0097B4D9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7F35CA41A593B1D0097B4D9 /* Images.xcassets */; };
+		B7F35CAA1A593B1D0097B4D9 /* bg.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B7F35CA61A593B1D0097B4D9 /* bg.mp3 */; };
+		B7F35CAB1A593B1D0097B4D9 /* hit.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B7F35CA71A593B1D0097B4D9 /* hit.mp3 */; };
+		B7F35CAC1A593B1D0097B4D9 /* miss.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B7F35CA81A593B1D0097B4D9 /* miss.mp3 */; };
+		B7F35CAE1A593C850097B4D9 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B7F35CAD1A593C850097B4D9 /* GameScene.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,15 +39,18 @@
 		B7F35C7E1A593AF00097B4D9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B7F35C801A593AF00097B4D9 /* GameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		B7F35C811A593AF00097B4D9 /* GameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
-		B7F35C831A593AF00097B4D9 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		B7F35C851A593AF00097B4D9 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		B7F35C861A593AF00097B4D9 /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		B7F35C891A593AF00097B4D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B7F35C8B1A593AF00097B4D9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B7F35C8E1A593AF00097B4D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		B7F35C941A593AF00097B4D9 /* IK_ObjcTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IK_ObjcTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7F35C991A593AF00097B4D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7F35C9A1A593AF00097B4D9 /* IK_ObjcTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IK_ObjcTests.m; sourceTree = "<group>"; };
+		B7F35CA41A593B1D0097B4D9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Images.xcassets; sourceTree = "<group>"; };
+		B7F35CA61A593B1D0097B4D9 /* bg.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bg.mp3; sourceTree = "<group>"; };
+		B7F35CA71A593B1D0097B4D9 /* hit.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hit.mp3; sourceTree = "<group>"; };
+		B7F35CA81A593B1D0097B4D9 /* miss.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = miss.mp3; sourceTree = "<group>"; };
+		B7F35CAD1A593C850097B4D9 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +74,7 @@
 		B7F35C6D1A593AF00097B4D9 = {
 			isa = PBXGroup;
 			children = (
+				B7F35CA51A593B1D0097B4D9 /* Sounds */,
 				B7F35C781A593AF00097B4D9 /* IK_Objc */,
 				B7F35C971A593AF00097B4D9 /* IK_ObjcTests */,
 				B7F35C771A593AF00097B4D9 /* Products */,
@@ -90,12 +97,12 @@
 				B7F35C7E1A593AF00097B4D9 /* AppDelegate.m */,
 				B7F35C801A593AF00097B4D9 /* GameScene.h */,
 				B7F35C811A593AF00097B4D9 /* GameScene.m */,
-				B7F35C831A593AF00097B4D9 /* GameScene.sks */,
 				B7F35C851A593AF00097B4D9 /* GameViewController.h */,
+				B7F35CAD1A593C850097B4D9 /* GameScene.sks */,
 				B7F35C861A593AF00097B4D9 /* GameViewController.m */,
 				B7F35C881A593AF00097B4D9 /* Main.storyboard */,
-				B7F35C8B1A593AF00097B4D9 /* Images.xcassets */,
 				B7F35C8D1A593AF00097B4D9 /* LaunchScreen.xib */,
+				B7F35CA41A593B1D0097B4D9 /* Images.xcassets */,
 				B7F35C791A593AF00097B4D9 /* Supporting Files */,
 			);
 			path = IK_Objc;
@@ -125,6 +132,16 @@
 				B7F35C991A593AF00097B4D9 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B7F35CA51A593B1D0097B4D9 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				B7F35CA61A593B1D0097B4D9 /* bg.mp3 */,
+				B7F35CA71A593B1D0097B4D9 /* hit.mp3 */,
+				B7F35CA81A593B1D0097B4D9 /* miss.mp3 */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,10 +224,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7F35CAB1A593B1D0097B4D9 /* hit.mp3 in Resources */,
 				B7F35C8F1A593AF00097B4D9 /* LaunchScreen.xib in Resources */,
-				B7F35C8C1A593AF00097B4D9 /* Images.xcassets in Resources */,
-				B7F35C841A593AF00097B4D9 /* GameScene.sks in Resources */,
+				B7F35CAC1A593B1D0097B4D9 /* miss.mp3 in Resources */,
+				B7F35CA91A593B1D0097B4D9 /* Images.xcassets in Resources */,
+				B7F35CAE1A593C850097B4D9 /* GameScene.sks in Resources */,
 				B7F35C8A1A593AF00097B4D9 /* Main.storyboard in Resources */,
+				B7F35CAA1A593B1D0097B4D9 /* bg.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,8 +376,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = IK_Objc/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -366,8 +388,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = IK_Objc/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -424,6 +448,7 @@
 				B7F35CA01A593AF00097B4D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B7F35CA11A593AF00097B4D9 /* Build configuration list for PBXNativeTarget "IK_ObjcTests" */ = {
 			isa = XCConfigurationList;
@@ -432,6 +457,7 @@
 				B7F35CA31A593AF00097B4D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
