@@ -7,9 +7,14 @@
 //
 
 #import "GameScene.h"
+#import "GameOverScene.h"
 
 CGFloat const upperArmAngleDeg = -10 * M_PI / 180;
 CGFloat const lowerArmAngleDeg = 130 * M_PI / 180;
+
+CGFloat const upperLegAngleDeg = 22 * M_PI / 180;
+CGFloat const lowerLegAngleDeg = -30 * M_PI / 180;
+
 
 @implementation GameScene{
     SKNode *_shadow;
@@ -27,15 +32,46 @@ CGFloat const lowerArmAngleDeg = 130 * M_PI / 180;
     SKNode *_head;
     SKNode *_targetNode;
     
+    SKNode *_upperLeg;
+    SKNode *_lowerLeg;
+    SKNode *_foot;
+    
     BOOL _rightPunch;
     BOOL _firstTouch;
     
     NSTimeInterval _lastSpawnTimeInterval;
     NSTimeInterval _lastUpdateTimeInterval;
+    
+    int _score;
+    int _life;
+    
+    SKLabelNode *_scoreLabel;
+    SKLabelNode *_lifeLabel;
 }
 
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
+    
+    _score = 0;
+    _life = 3;
+    
+    _scoreLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+    _scoreLabel.text = [NSString stringWithFormat:@"Score: %d", _score];
+    _scoreLabel.fontSize = 20;
+    _scoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
+    _scoreLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeTop;
+    _scoreLabel.position = CGPointMake(10, self.size.height - 10);
+    [self addChild:_scoreLabel];
+    
+    _lifeLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+    _lifeLabel.text = [NSString stringWithFormat:@"Lives: %d", _life];
+    _lifeLabel.fontSize = 20;
+    _lifeLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeRight;
+    _lifeLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeTop;
+    _lifeLabel.position = CGPointMake(self.size.width - 10, self.size.height - 10);
+    [self addChild:_lifeLabel];
+    
+    
     _lowerTorso = [self childNodeWithName:@"torso_lower"];
     _lowerTorso.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) - 30);
     
@@ -64,6 +100,12 @@ CGFloat const lowerArmAngleDeg = 130 * M_PI / 180;
     
     _head.constraints = @[orientToNodeConstraint, rotateConstraint];
     
+    _upperLeg = [_lowerTorso childNodeWithName:@"leg_upper_back"];
+    _lowerLeg = [_upperLeg childNodeWithName:@"leg_lower_back"];
+    _foot = [_lowerLeg childNodeWithName:@"foot_back"];
+    
+    _upperLeg.reachConstraints = [[SKReachConstraints alloc] initWithLowerAngleLimit:-45.0 upperAngleLimit:160.0];
+    _lowerLeg.reachConstraints = [[SKReachConstraints alloc] initWithLowerAngleLimit:-90.0 upperAngleLimit:0.0];
 }
 
 -(void)addShuriken{
@@ -91,7 +133,39 @@ CGFloat const lowerArmAngleDeg = 130 * M_PI / 180;
     
     SKAction *actionMoveDone = [SKAction removeFromParent];
     
-    [shuriken runAction:[SKAction sequence:@[actionMove, actionMoveDone]]];
+    SKAction *hitAction = [SKAction runBlock:^{
+        if (_life > 0) {
+            _life--;
+        }
+        
+        _lifeLabel.text = [NSString stringWithFormat:@"Lives: %d", _life];
+        
+        SKAction *blink = [SKAction sequence:@[[SKAction fadeOutWithDuration:0.05], [SKAction fadeInWithDuration:0.05]]];
+        
+        SKAction *checkGameOverAction = [SKAction runBlock:^{
+            if (_life <= 0) {
+                
+                SKTransition *transtion = [SKTransition fadeWithDuration:1.0];
+                
+                //check win or fail
+                BOOL won;
+                
+                if (_score >= 5) {
+                    won = YES;
+                }else{
+                    won = NO;
+                }
+                
+                GameOverScene *gameOverScene = [[GameOverScene alloc] initWithSize:self.view.bounds.size won:won];
+                
+                [self.view presentScene:gameOverScene transition:transtion];
+            }
+        }];
+        
+        [_lowerTorso runAction:[SKAction sequence:@[blink, blink, checkGameOverAction]]];
+    }];
+    
+    [shuriken runAction:[SKAction sequence:@[actionMove, hitAction,actionMoveDone]]];
     
     CGFloat angle = (left == 0)? -M_PI_2 : M_PI_2;
     
@@ -108,7 +182,7 @@ CGFloat const lowerArmAngleDeg = 130 * M_PI / 180;
                 if ([node.name isEqualToString:@"shuriken"]) {
                     if ([node intersectsNode:effectorNode]) {
                         //sound
-                        [self runAction:[SKAction playSoundFileNamed:@"hit.mp3" waitForCompletion:nil]];
+                        [self runAction:[SKAction playSoundFileNamed:@"hit.mp3" waitForCompletion:NO]];
                         
                         //show spark
                         SKSpriteNode *spark = [SKSpriteNode spriteNodeWithImageNamed:@"spark"];
@@ -121,10 +195,14 @@ CGFloat const lowerArmAngleDeg = 130 * M_PI / 180;
                         
                         [spark runAction:[SKAction sequence:@[fadeAndScale, cleanUp]]];
                         
+                        //update score
+                        _score++;
+                        _scoreLabel.text = [NSString stringWithFormat:@"Score: %d", _score];
+                        
                         [node removeFromParent];
                     }
                     else{
-                        [self runAction:[SKAction playSoundFileNamed:@"miss.mp3" waitForCompletion:nil]];
+                        [self runAction:[SKAction playSoundFileNamed:@"miss.mp3" waitForCompletion:NO]];
                     }
                 }
             }
@@ -159,6 +237,19 @@ CGFloat const lowerArmAngleDeg = 130 * M_PI / 180;
     _rightPunch = !_rightPunch;
 }
 
+-(void)kickAtLocation:(CGPoint)location{
+    SKAction *kick = [SKAction reachTo:location rootNode:_upperLeg duration:0.1];
+    
+    SKAction *restore = [SKAction runBlock:^{
+        [_upperLeg runAction:[SKAction rotateToAngle:upperLegAngleDeg duration:0.1]];
+        [_lowerLeg runAction:[SKAction rotateToAngle:lowerLegAngleDeg duration:0.1]];
+    }];
+    
+    SKAction *checkIntersection = [self intersectionCheckActionForNode:_foot];
+    
+    [_foot runAction:[SKAction sequence:@[kick,checkIntersection,restore]]];
+}
+
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
     
@@ -168,7 +259,13 @@ CGFloat const lowerArmAngleDeg = 130 * M_PI / 180;
     
         _lowerTorso.xScale = location.x < CGRectGetMidX(self.frame)? fabs(_lowerTorso.xScale) * -1 : fabs(_lowerTorso.xScale);
         
-        [self punchAtLocation:location];
+        BOOL lower = location.y < _lowerTorso.position.y;
+        
+        if (lower) {
+            [self kickAtLocation:location];
+        }else{
+            [self punchAtLocation:location];
+        }
         
         _targetNode.position = location;
     }

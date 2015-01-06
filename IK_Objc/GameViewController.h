@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
+@import AVFoundation;
 
 @interface GameViewController : UIViewController
-
+@property(nonatomic) AVAudioPlayer *backgroundMusicPlayer;
 @end

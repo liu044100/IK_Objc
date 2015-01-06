@@ -19,6 +19,8 @@
 		B7F35CAB1A593B1D0097B4D9 /* hit.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B7F35CA71A593B1D0097B4D9 /* hit.mp3 */; };
 		B7F35CAC1A593B1D0097B4D9 /* miss.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B7F35CA81A593B1D0097B4D9 /* miss.mp3 */; };
 		B7F35CAE1A593C850097B4D9 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B7F35CAD1A593C850097B4D9 /* GameScene.sks */; };
+		B7F35CB11A5B82C70097B4D9 /* GameOverScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F35CB01A5B82C70097B4D9 /* GameOverScene.m */; };
+		B7F35CB41A5B87FA0097B4D9 /* SKNode+unarchive.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F35CB31A5B87FA0097B4D9 /* SKNode+unarchive.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,10 @@
 		B7F35CA71A593B1D0097B4D9 /* hit.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hit.mp3; sourceTree = "<group>"; };
 		B7F35CA81A593B1D0097B4D9 /* miss.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = miss.mp3; sourceTree = "<group>"; };
 		B7F35CAD1A593C850097B4D9 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		B7F35CAF1A5B82C70097B4D9 /* GameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverScene.h; sourceTree = "<group>"; };
+		B7F35CB01A5B82C70097B4D9 /* GameOverScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverScene.m; sourceTree = "<group>"; };
+		B7F35CB21A5B87FA0097B4D9 /* SKNode+unarchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKNode+unarchive.h"; sourceTree = "<group>"; };
+		B7F35CB31A5B87FA0097B4D9 /* SKNode+unarchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKNode+unarchive.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,9 +103,13 @@
 				B7F35C7E1A593AF00097B4D9 /* AppDelegate.m */,
 				B7F35C801A593AF00097B4D9 /* GameScene.h */,
 				B7F35C811A593AF00097B4D9 /* GameScene.m */,
+				B7F35CAF1A5B82C70097B4D9 /* GameOverScene.h */,
+				B7F35CB01A5B82C70097B4D9 /* GameOverScene.m */,
 				B7F35C851A593AF00097B4D9 /* GameViewController.h */,
-				B7F35CAD1A593C850097B4D9 /* GameScene.sks */,
 				B7F35C861A593AF00097B4D9 /* GameViewController.m */,
+				B7F35CB21A5B87FA0097B4D9 /* SKNode+unarchive.h */,
+				B7F35CB31A5B87FA0097B4D9 /* SKNode+unarchive.m */,
+				B7F35CAD1A593C850097B4D9 /* GameScene.sks */,
 				B7F35C881A593AF00097B4D9 /* Main.storyboard */,
 				B7F35C8D1A593AF00097B4D9 /* LaunchScreen.xib */,
 				B7F35CA41A593B1D0097B4D9 /* Images.xcassets */,
@@ -248,8 +258,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7F35CB11A5B82C70097B4D9 /* GameOverScene.m in Sources */,
 				B7F35C871A593AF00097B4D9 /* GameViewController.m in Sources */,
 				B7F35C7F1A593AF00097B4D9 /* AppDelegate.m in Sources */,
+				B7F35CB41A5B87FA0097B4D9 /* SKNode+unarchive.m in Sources */,
 				B7F35C821A593AF00097B4D9 /* GameScene.m in Sources */,
 				B7F35C7C1A593AF00097B4D9 /* main.m in Sources */,
 			);

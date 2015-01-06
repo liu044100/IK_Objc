@@ -7,26 +7,10 @@
 //
 
 #import "GameViewController.h"
+#import "SKNode+unarchive.h"
 #import "GameScene.h"
 
-@implementation SKScene (Unarchive)
 
-+ (instancetype)unarchiveFromFile:(NSString *)file {
-    /* Retrieve scene file path from the application bundle */
-    NSString *nodePath = [[NSBundle mainBundle] pathForResource:file ofType:@"sks"];
-    /* Unarchive the file to an SKScene object */
-    NSData *data = [NSData dataWithContentsOfFile:nodePath
-                                          options:NSDataReadingMappedIfSafe
-                                            error:nil];
-    NSKeyedUnarchiver *arch = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
-    [arch setClass:self forClassName:@"SKScene"];
-    SKScene *scene = [arch decodeObjectForKey:NSKeyedArchiveRootObjectKey];
-    [arch finishDecoding];
-    
-    return scene;
-}
-
-@end
 
 @implementation GameViewController
 
@@ -34,6 +18,8 @@
 {
     [super viewDidLoad];
 
+    [self startBackgroundMusic];
+    
     // Configure the view.
     SKView * skView = (SKView *)self.view;
     skView.showsFPS = YES;
@@ -47,6 +33,14 @@
     
     // Present the scene.
     [skView presentScene:scene];
+}
+
+-(void)startBackgroundMusic{
+    NSURL *backgroundMusicURL = [[NSBundle mainBundle] URLForResource:@"bg" withExtension:@"mp3"];
+    self.backgroundMusicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:backgroundMusicURL error:nil];
+    self.backgroundMusicPlayer.numberOfLoops = -1;
+    [self.backgroundMusicPlayer prepareToPlay];
+    [self.backgroundMusicPlayer play];
 }
 
 - (BOOL)shouldAutorotate
